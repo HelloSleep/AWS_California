@@ -25,7 +25,7 @@ variable "az_a" {
 variable "az_c" {
   description = "az c"
   type        = string
-  default     = "us-west-1c"
+  default     = "us-west-1b"
 }
 
 variable "private_subnet_a_web" {
