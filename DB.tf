@@ -13,7 +13,7 @@ resource "aws_db_instance" "global-master-db" {
   allocated_storage     = 50
   max_allocated_storage = 80
   engine                = "mysql"
-  engine_version        = "5.7.22"
+  engine_version        = "5.7.25"
   instance_class        = "db.t2.micro"
   name                  = "grm_californiamasterdb"
   username              = "admin"

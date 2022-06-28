@@ -21,18 +21,28 @@ pipeline {
         }
         stage('terraform apply') {
             steps{
-                sh 'terraform apply --auto-approve'
+                sh 'echo "this action will apply terraform resource"'
+            script {
+              if(params.ACTION =='apply'){
+                  sh 'terraform apply -auto-approve'
+              }
+            }
             }
         }
         stage('choice terraform destroy'){
           steps{
             sh 'echo "this action will destroy terraform resource"'
-          script {
+            script {
               if(params.ACTION =='destroy'){
                   sh 'terraform destroy -auto-approve'
               }
+            }
           }
-          }
+        }
+    }
+    post {
+        always{
+            sh 'terraform state list'
         }
     }
 }
