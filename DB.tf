@@ -3,7 +3,7 @@
 resource "aws_db_subnet_group" "global-subnet-group" {
   name        = "db-subnet-group"
   description = "The subnets used for RDS "
-  subnet_ids  = ["${aws_subnet.global-public_subnet_a.id}", "${aws_subnet.global-public_subnet_c.id}"]
+  subnet_ids  = ["${aws_subnet.global-public-subnet-a.id}", "${aws_subnet.global-public-subnet-c.id}"]
   tags = {
     Name = "db-subnet-group"
   }
