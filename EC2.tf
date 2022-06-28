@@ -1,3 +1,7 @@
+#----------------data---------------
+data "template_file" "user_data" {
+  template = file("install.sh")
+}
 #----------------ec2---------------
 #public 배스쳔호스트
 resource "aws_instance" "global-public-ec2-a" {

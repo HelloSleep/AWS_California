@@ -11,22 +11,22 @@ resource "aws_launch_configuration" "web_launch" {
   }
 }
 
-#web-autoscailing
-resource "aws_autoscaling_group" "web_asg" {
-  launch_configuration = aws_launch_configuration.web_launch.name
-  vpc_zone_identifier  = [aws_subnet.global-private-subnet-a-web.id, aws_subnet.global-private-subnet-c-web.id]
-  target_group_arns    = [aws_lb_target_group.global-targetgroup-web.arn]
-  health_check_type    = "ELB"
+# #web-autoscailing
+# resource "aws_autoscaling_group" "web_asg" {
+#   launch_configuration = aws_launch_configuration.web_launch.name
+#   vpc_zone_identifier  = [aws_subnet.global-private-subnet-a-web.id, aws_subnet.global-private-subnet-c-web.id]
+#   target_group_arns    = [aws_lb_target_group.global-targetgroup-web.arn]
+#   health_check_type    = "ELB"
 
-  min_size = var.min_size
-  max_size = var.max_size
+#   min_size = var.min_size
+#   max_size = var.max_size
 
-  tag {
-    key                 = "Name"
-    value               = "global-asg-web"
-    propagate_at_launch = true
-  }
-}
+#   tag {
+#     key                 = "Name"
+#     value               = "global-asg-web"
+#     propagate_at_launch = true
+#   }
+# }
 
 # #web-autoscailing
 # resource "aws_autoscaling_group" "web_asg" {
