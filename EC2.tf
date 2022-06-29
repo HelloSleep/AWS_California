@@ -24,10 +24,10 @@ resource "aws_instance" "global-public-ec2-a" {
   }
 }
 
-resource "aws_instance" "global-public-ec2-c" {
+resource "aws_instance" "global-public-ec2-b" {
   ami               = var.ec2_ami
   instance_type     = "t2.micro"
-  availability_zone = var.az_c
+  availability_zone = var.za_c
   key_name          = "teamsol-us-west-1"
 
   user_data = data.template_file.user_data_key.rendered
@@ -37,7 +37,7 @@ resource "aws_instance" "global-public-ec2-c" {
     aws_security_group.global-public-sg-bastion.id
   ]
   tags = {
-    Name = "global-public-ec2-c"
+    Name = "global-public-ec2-b"
   }
 }
 # AutoScaling Group 시작구성으로 자동구성
@@ -59,10 +59,10 @@ resource "aws_instance" "global-private-ec2-a-web" {
   }
 }
 
-resource "aws_instance" "global-private-ec2-c-web" {
+resource "aws_instance" "global-private-ec2-b-web" {
   ami               = var.ec2_ami
   instance_type     = "t2.micro"
-  availability_zone = var.az_c
+  availability_zone = var.za_c
   key_name          = "teamsol-us-west-1"
 
   user_data = data.template_file.user_data.rendered
@@ -72,6 +72,6 @@ resource "aws_instance" "global-private-ec2-c-web" {
     aws_security_group.global-private-sg-web.id
   ]
   tags = {
-    Name = "global-private-ec2-c-web"
+    Name = "global-private-ec2-b-web"
   }
 }
