@@ -13,7 +13,7 @@ resource "aws_instance" "global-public-ec2-a" {
   availability_zone = var.az_a
   key_name          = "teamsol-us-west-1"
 
-#  user_data = data.template_file.user_data_key.rendered
+
 
   subnet_id = aws_subnet.global-public-subnet-a.id
   vpc_security_group_ids = [
@@ -30,7 +30,7 @@ resource "aws_instance" "global-public-ec2-b" {
   availability_zone = var.za_c
   key_name          = "teamsol-us-west-1"
 
-  #user_data = data.template_file.user_data_key.rendered
+
 
   subnet_id = aws_subnet.global-public-subnet-c.id
   vpc_security_group_ids = [
@@ -38,40 +38,5 @@ resource "aws_instance" "global-public-ec2-b" {
   ]
   tags = {
     Name = "global-public-ec2-b"
-  }
-}
-# AutoScaling Group 시작구성으로 자동구성
-# #web
-resource "aws_instance" "global-private-ec2-a-web" {
-  ami               = var.ec2_ami
-  instance_type     = "t2.micro"
-  availability_zone = var.az_a
-  key_name          = "teamsol-us-west-1"
-
-  user_data = data.template_file.user_data.rendered
-
-  subnet_id = aws_subnet.global-private-subnet-a-web.id
-  vpc_security_group_ids = [
-    aws_security_group.global-private-sg-web.id
-  ]
-  tags = {
-    Name = "global-private-ec2-a-web"
-  }
-}
-
-resource "aws_instance" "global-private-ec2-b-web" {
-  ami               = var.ec2_ami
-  instance_type     = "t2.micro"
-  availability_zone = var.za_c
-  key_name          = "teamsol-us-west-1"
-
-  user_data = data.template_file.user_data.rendered
-
-  subnet_id = aws_subnet.global-private-subnet-c-web.id
-  vpc_security_group_ids = [
-    aws_security_group.global-private-sg-web.id
-  ]
-  tags = {
-    Name = "global-private-ec2-b-web"
   }
 }
