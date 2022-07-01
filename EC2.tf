@@ -27,7 +27,7 @@ resource "aws_instance" "global-public-ec2-a" {
 resource "aws_instance" "global-public-ec2-b" {
   ami               = var.ec2_ami
   instance_type     = "t2.micro"
-  availability_zone = var.za_c
+  availability_zone = var.az_c
   key_name          = "teamsol-us-west-1"
 
 
