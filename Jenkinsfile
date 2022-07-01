@@ -42,7 +42,14 @@ pipeline {
     }
     post {
         always{
+            sh 'terraform output'
             sh 'terraform state list'
         }
-    }
+        success {
+			slackSend channel: 'devops', message: 'it is builded succesed'
+	    }
+	
+	    failure {
+			slackSend channel: 'devops', message: 'This build is failed'
+     	}
 }
