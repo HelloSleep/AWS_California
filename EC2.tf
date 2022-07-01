@@ -1,10 +1,10 @@
 #----------------data---------------
-data "template_file" "user_data_key" {
-  template = file("sshkey.sh")
-}
-data "template_file" "user_data" {
-  template = file("install.sh")
-}
+#data "template_file" "user_data_key" {
+#  template = file("sshkey.sh")
+#}
+#data "template_file" "user_data" {
+#  template = file("install.sh")
+#}
 #----------------ec2---------------
 #public 배스쳔호스트
 resource "aws_instance" "global-public-ec2-a" {
@@ -13,7 +13,7 @@ resource "aws_instance" "global-public-ec2-a" {
   availability_zone = var.az_a
   key_name          = "teamsol-us-west-1"
 
-  user_data = data.template_file.user_data_key.rendered
+#  user_data = data.template_file.user_data_key.rendered
 
   subnet_id = aws_subnet.global-public-subnet-a.id
   vpc_security_group_ids = [
@@ -30,7 +30,7 @@ resource "aws_instance" "global-public-ec2-b" {
   availability_zone = var.za_c
   key_name          = "teamsol-us-west-1"
 
-  user_data = data.template_file.user_data_key.rendered
+  #user_data = data.template_file.user_data_key.rendered
 
   subnet_id = aws_subnet.global-public-subnet-c.id
   vpc_security_group_ids = [
